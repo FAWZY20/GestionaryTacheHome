@@ -5,38 +5,31 @@ import jakarta.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "UTILISATEURS", schema = "felsam")
+@Table(name = "UTILISATEURS")
 public class Utilisateur {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ")
+    @SequenceGenerator(name = "SEQ", sequenceName = "VEHICLE_SEQ", allocationSize = 1)
     private Long id;
 
-    @Column(name = "TITRE", nullable = false, length = 20)
-    private String titre;
+    @Column(name = "NAME", nullable = false, length = 20)
+    private String name;
 
-    @Column(name = "DESCRIPTION", length = 20)
-    private String description;
+    @Column(name = "PASSWORD", nullable = false, length = 10)
+    private String password;
 
-    @Column(name = "DATE_CREATION", nullable = false)
-    private Date dateCreation;
+    @Column(name = "MAIL", nullable = false)
+    private String mail;
 
-    @Column(name = "DATE_FIN", nullable = false)
-    private Date dateFin;
+    public Utilisateur(String name, String password, String mail) {
+        this.name = name;
+        this.password = password;
+        this.mail = mail;
+    }
 
-    @Column(name = "STATUT", length = 20)
-    private String statut;
+    public Utilisateur() {
 
-    @Column(name = "USERID", nullable = false)
-    private Long userId;
-
-
-    public Utilisateur(String titre, String description, Date dateCreation, Date dateFin, String statut, Long userId) {
-        this.titre = titre;
-        this.description = description;
-        this.dateCreation = dateCreation;
-        this.dateFin = dateFin;
-        this.statut = statut;
-        this.userId = userId;
     }
 
     public Long getId() {
@@ -47,51 +40,27 @@ public class Utilisateur {
         this.id = id;
     }
 
-    public String getTitre() {
-        return titre;
+    public String getName() {
+        return name;
     }
 
-    public void setTitre(String titre) {
-        this.titre = titre;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getDescription() {
-        return description;
+    public String getPassword() {
+        return password;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public Date getDateCreation() {
-        return dateCreation;
+    public String getMail() {
+        return mail;
     }
 
-    public void setDateCreation(Date dateCreation) {
-        this.dateCreation = dateCreation;
-    }
-
-    public Date getDateFin() {
-        return dateFin;
-    }
-
-    public void setDateFin(Date dateFin) {
-        this.dateFin = dateFin;
-    }
-
-    public String getStatut() {
-        return statut;
-    }
-
-    public void setStatut(String statut) {
-        this.statut = statut;
-    }
-
-    public Long getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Long userId) {
-        this.userId = userId;
+    public void setMail(String mail) {
+        this.mail = mail;
     }
 }
