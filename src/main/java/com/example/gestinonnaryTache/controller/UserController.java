@@ -3,23 +3,25 @@ package com.example.gestinonnaryTache.controller;
 import com.example.gestinonnaryTache.model.Utilisateur;
 import com.example.gestinonnaryTache.repository.UtilisateurRepository;
 import com.example.gestinonnaryTache.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
 public class UserController {
 
-    UserService userService;
-    UtilisateurRepository utilisateurRepository;
+    @Autowired
+    private UserService userService;
+    @Autowired
+    private UtilisateurRepository utilisateurRepository;
 
     @GetMapping("/users")
     public List<Utilisateur> getUsers() {
         return (List<Utilisateur>) utilisateurRepository.findAll();
     }
 
-    @PostMapping("/inscrit")
+    @PostMapping("/nouveauCompte")
     public void addUser(@RequestBody Utilisateur utilisateur) {
         utilisateurRepository.save(utilisateur);
     }

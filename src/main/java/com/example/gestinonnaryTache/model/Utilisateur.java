@@ -13,7 +13,7 @@ public class Utilisateur {
     @SequenceGenerator(name = "SEQ", sequenceName = "VEHICLE_SEQ", allocationSize = 1)
     private Long id;
 
-    @Column(name = "NAME", nullable = false, length = 20)
+    @Column(name = "NAME", nullable = false)
     private String name;
 
     @Column(name = "PASSWORD", nullable = false, length = 10)
