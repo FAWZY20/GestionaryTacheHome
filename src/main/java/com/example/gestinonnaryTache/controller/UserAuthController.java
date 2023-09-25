@@ -4,6 +4,7 @@ import com.example.gestinonnaryTache.model.Utilisateur;
 import com.example.gestinonnaryTache.service.JwtService;
 import com.example.gestinonnaryTache.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,7 +20,7 @@ public class UserAuthController {
     }
 
     @PostMapping("/login-success")
-    public String loginSuccess(@RequestBody Utilisateur checkUtilisateur) {
+    public ResponseEntity<?> loginSuccess(@RequestBody Utilisateur checkUtilisateur) {
         return userService.loginCheck(checkUtilisateur.getMail(), checkUtilisateur.getPassword());
     }
 

@@ -3,10 +3,13 @@ package com.example.gestinonnaryTache.service;
 import com.example.gestinonnaryTache.model.Utilisateur;
 import com.example.gestinonnaryTache.repository.UtilisateurRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class UserService {
@@ -22,13 +25,21 @@ public class UserService {
     public Utilisateur getUserByEmail(String mail) {
         return utilisateurRepository.findByMail(mail);
     }
-    public String loginCheck(String mail, String pwd) {
+
+    public ResponseEntity<?> loginCheck(String mail, String pwd) {
         Utilisateur utilisateur = utilisateurRepository.getByMailAndPassword(mail, pwd) ;
-        if (utilisateur != null){
-            String username = utilisateur.getName();
-            return jwtService.generateToken(username);
-        } else {
-            return "la connexion a echouer";
+        try {
+            String tokenInfo = utilisateur.getMail();
+            String token = jwtService.generateToken(tokenInfo);
+
+            Map<String, Object> response = new HashMap<>();
+            response.put("token", token);
+
+            return ResponseEntity.ok(response);
+
+        } catch (Exception e){
+            e.printStackTrace();
+            return null;
         }
     }
 }
