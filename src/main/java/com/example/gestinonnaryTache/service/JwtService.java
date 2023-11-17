@@ -20,7 +20,7 @@ public class JwtService {
         SECRET_KEY = Base64.getEncoder().encodeToString(secretKeyBytes);
     }
 
-    public String generateToken(String mail ) {
+    public String generateToken(String mail) {
         return Jwts.builder()
                 .setSubject(mail)
                 .setExpiration(new Date(System.currentTimeMillis() + EXPIRATION_TIME))

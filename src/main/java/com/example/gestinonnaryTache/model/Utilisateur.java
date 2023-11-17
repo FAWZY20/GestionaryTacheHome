@@ -13,8 +13,11 @@ public class Utilisateur {
     @SequenceGenerator(name = "SEQ", sequenceName = "VEHICLE_SEQ", allocationSize = 1)
     private Long id;
 
-    @Column(name = "NAME", nullable = false)
-    private String name;
+    @Column(name = "NOM", nullable = false)
+    private String nom;
+
+    @Column(name = "PRENOM", nullable = false)
+    private String prenom;
 
     @Column(name = "PASSWORD", nullable = false, length = 10)
     private String password;
@@ -22,14 +25,27 @@ public class Utilisateur {
     @Column(name = "MAIL", nullable = false)
     private String mail;
 
-    public Utilisateur(String name, String password, String mail) {
-        this.name = name;
+    @Column(name = "IMAGE")
+    private String image = "https://t4.ftcdn.net/jpg/03/49/49/79/360_F_349497933_Ly4im8BDmHLaLzgyKg2f2yZOvJjBtlw5.jpg";
+
+    public Utilisateur(String nom, String password, String mail, String image, String prenom) {
+        this.nom = nom;
+        this.prenom= prenom;
         this.password = password;
         this.mail = mail;
+        this.image = image;
     }
 
     public Utilisateur() {
 
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public Long getId() {
@@ -40,12 +56,20 @@ public class Utilisateur {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getNom() {
+        return nom;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public String getPrenom() {
+        return prenom;
+    }
+
+    public void setPrenom(String prenom) {
+        this.prenom = prenom;
     }
 
     public String getPassword() {

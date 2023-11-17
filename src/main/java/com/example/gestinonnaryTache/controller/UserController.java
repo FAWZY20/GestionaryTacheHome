@@ -21,6 +21,11 @@ public class UserController {
         return (List<Utilisateur>) utilisateurRepository.findAll();
     }
 
+    @GetMapping("/usersByMail/{mail}")
+    public Utilisateur getUserByEmail(@PathVariable("mail") String mail) {
+        return utilisateurRepository.findByMail(mail);
+    }
+
     @PostMapping("/nouveauCompte")
     public void addUser(@RequestBody Utilisateur utilisateur) {
         utilisateurRepository.save(utilisateur);
@@ -36,7 +41,9 @@ public class UserController {
     public void updateUser(@PathVariable("mail") String mail, @RequestBody Utilisateur utilisateurDetails){
         Utilisateur utilisateur = userService.getUserByEmail(mail);
 
-        utilisateur.setName(utilisateurDetails.getName());
+        utilisateur.setNom(utilisateurDetails.getNom());
+        utilisateur.setPrenom(utilisateurDetails.getPrenom());
+        utilisateur.setImage(utilisateurDetails.getImage());
         utilisateur.setPassword(utilisateurDetails.getPassword());
         utilisateur.setMail(utilisateurDetails.getMail());
 
