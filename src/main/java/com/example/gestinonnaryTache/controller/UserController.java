@@ -26,6 +26,11 @@ public class UserController {
         return utilisateurRepository.findByMail(mail);
     }
 
+    @GetMapping("/famille/{nom}")
+    public List<Utilisateur> getFamille(@PathVariable("nom") String nom){
+        return utilisateurRepository.findByNom(nom);
+    }
+
     @PostMapping("/nouveauCompte")
     public void addUser(@RequestBody Utilisateur utilisateur) {
         utilisateurRepository.save(utilisateur);

@@ -5,12 +5,16 @@ import jakarta.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "TACHES", schema = "felsam")
+@Table(name = "TACHE")
 public class Taches {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ")
+    @SequenceGenerator(name = "SEQ", sequenceName = "VEHICLE_SEQ", allocationSize = 1)
     private Long id;
+
+    @Column(name = "UTILISATEUR", nullable = false)
+    private String user;
 
     @Column(name = "TITRE", nullable = false)
     private String titre;
@@ -18,27 +22,47 @@ public class Taches {
     @Column(name = "DESCRIPTION")
     private String description;
 
-    @Column(name = "DATE_CREATION", nullable = false)
-    private Date dateCreation;
-
-    @Column(name = "DATE_FIN", nullable = false)
-    private Date dateFin;
-
+    @Column(name = "DATEECHEANCE", nullable = false)
+    private String dateFin;
     @Column(name = "STATUT", nullable = false)
     private String statut = "en attente";
 
-    @Column(name = "USERID", nullable = false)
-    private Long userId;
+    @Column(name = "PRIORITE", nullable = false)
+    private String priorite;
+
+    @Column(name = "PIECE", nullable = false)
+    private String piece;
 
 
-    public Taches(Long id, String titre, String description, Date dateCreation, Date dateFin, String statut, Long userId) {
+    public Taches(Long id, String titre, String description, String dateFin, String statut, String user, String priorite, String piece) {
         this.id = id;
         this.titre = titre;
         this.description = description;
-        this.dateCreation = dateCreation;
         this.dateFin = dateFin;
         this.statut = statut;
-        this.userId = userId;
+        this.user = user;
+        this.priorite = priorite;
+        this.piece = piece;
+    }
+
+    public Taches() {
+
+    }
+
+    public String getPriorite() {
+        return priorite;
+    }
+
+    public void setPriorite(String priorite) {
+        this.priorite = priorite;
+    }
+
+    public String getPiece() {
+        return piece;
+    }
+
+    public void setPiece(String piece) {
+        this.piece = piece;
     }
 
     public Long getId() {
@@ -65,19 +89,11 @@ public class Taches {
         this.description = description;
     }
 
-    public Date getDateCreation() {
-        return dateCreation;
-    }
-
-    public void setDateCreation(Date dateCreation) {
-        this.dateCreation = dateCreation;
-    }
-
-    public Date getDateFin() {
+    public String getDateFin() {
         return dateFin;
     }
 
-    public void setDateFin(Date dateFin) {
+    public void setDateFin(String dateFin) {
         this.dateFin = dateFin;
     }
 
@@ -89,12 +105,12 @@ public class Taches {
         this.statut = statut;
     }
 
-    public Long getUserId() {
-        return userId;
+    public String getUser() {
+        return user;
     }
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
+    public void setUser(String user) {
+        this.user = user;
     }
 
 }

@@ -12,6 +12,8 @@ import java.util.List;
 public interface UtilisateurRepository extends JpaRepository<Utilisateur, Long> {
     Utilisateur findByMail(String email);
     List<Utilisateur> findAll();
+    List<Utilisateur> findByNom(String nom);
+
     @Query("SELECT u FROM Utilisateur u WHERE u.mail= :mail AND u.password = :password")
     Utilisateur getByMailAndPassword(@Param("mail") String mail, @Param("password") String password);
 }
