@@ -25,7 +25,7 @@ public class Taches {
     @Column(name = "DATEECHEANCE", nullable = false)
     private String dateFin;
     @Column(name = "STATUT", nullable = false)
-    private String statut = "en attente";
+    private String statut = "En_Attente";
 
     @Column(name = "PRIORITE", nullable = false)
     private String priorite;
