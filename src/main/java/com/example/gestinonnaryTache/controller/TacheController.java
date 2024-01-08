@@ -24,4 +24,16 @@ public class TacheController {
     public List<Taches> getTache(@PathVariable("user") String utilisateur){
         return tacheRepository.findByUser(utilisateur);
     }
+
+    @GetMapping("tacheById/{user}/{id}")
+    public Taches getTacheById(@PathVariable("user") String utilisateur, @PathVariable("id") Long  id){
+        return tacheRepository.findByIdAndUser(id, utilisateur);
+    }
+
+    @PutMapping("/updateTache/{userId}/{id}")
+    public void updateStatutTache(@PathVariable("userId") String userId, @PathVariable("id") Long id, @RequestBody Taches tachesDetails){
+        Taches taches = getTacheById(userId, id);
+        taches.setStatut(tachesDetails.getStatut());
+        tacheRepository.save(taches);
+    }
 }
