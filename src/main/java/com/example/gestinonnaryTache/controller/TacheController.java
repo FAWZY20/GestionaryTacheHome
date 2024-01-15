@@ -37,8 +37,8 @@ public class TacheController {
         tacheRepository.save(taches);
     }
 
-    @DeleteMapping("/deleteTache/${id}")
+    @DeleteMapping("/deleteTache/{id}")
     public  void deleteTache(@PathVariable("id") Long id){
-        tacheRepository.deleteTache(id);
+        tacheRepository.deleteById(id);
     }
 }

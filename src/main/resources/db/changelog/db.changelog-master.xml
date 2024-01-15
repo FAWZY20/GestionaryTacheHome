@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="1" author="felsam">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="UTILISATEURS"/>
+            </not>
+        </preConditions>
+        <createTable tableName="UTILISATEURS">
+            <column name="id" type="BIGINT">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="IMAGE" type="VARCHAR(255)"/>
+            <column name="MAIL" type="VARCHAR(255)">
+                <constraints nullable="false" />
+            *</column>
+            <column name="NOM" type="VARCHAR(255)">
+            <constraints nullable="false" />
+            *</column>
+            <column name="PASSWORD" type="VARCHAR(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="PRENOM" type="VARCHAR(255)">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+        <rollback>
+            <dropTable tableName="UTILISATEURS"/>
+        </rollback>
+    </changeSet>
+    <changeSet id="2" author="felsam">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="USERAUTH"/>
+            </not>
+        </preConditions>
+        <createTable tableName="USERAUTH">
+            <column name="id" type="BIGINT">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="EMAIL" type="VARCHAR(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="ID_USERAUTH" type="VARCHAR(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="PASSWORD" type="VARCHAR(255)">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+        <rollback>
+            <dropTable tableName="USERAUTH"/>
+        </rollback>
+    </changeSet>
+    <changeSet id="3" author="felsam">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="TACHE"/>
+            </not>
+        </preConditions>
+        <createTable tableName="TACHE">
+            <column name="id" type="BIGINT">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="DATEECHEANCE" type="VARCHAR(255)">
+                <constraints  nullable="false"/>
+            </column>
+            <column name="DESCRIPTION" type="VARCHAR(255)">
+                <constraints  nullable="true"/>
+            </column>
+            <column name="PIECE" type="VARCHAR(255)">
+                <constraints  nullable="false"/>
+            </column>
+            <column name="PRIORITE" type="VARCHAR(255)">
+                <constraints  nullable="false"/>
+            </column>
+            <column name="STATUT" type="VARCHAR(255)">
+                <constraints  nullable="false"/>
+            </column>
+            <column name="TITRE" type="VARCHAR(255)">
+                <constraints  nullable="false"/>
+            </column>
+            <column name="UTILISATEUR" type="VARCHAR(255)">
+                <constraints  nullable="false"/>
+            </column>
+        </createTable>
+        <rollback>
+            <dropTable tableName="TACHE"/>
+        </rollback>
+    </changeSet>
+
+</databaseChangeLog>
