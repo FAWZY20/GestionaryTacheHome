@@ -93,5 +93,28 @@
             <dropTable tableName="TACHE"/>
         </rollback>
     </changeSet>
-
+    <changeSet id="5" author="felsam">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="NOTE"/>
+            </not>
+        </preConditions>
+        <createTable tableName="NOTE">
+            <column name="id" type="BIGINT">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="USER_ID" type="VARCHAR(255)">
+                <constraints  nullable="false"/>
+            </column>
+            <column name="TITRE" type="VARCHAR(255)">
+                <constraints  nullable="false"/>
+            </column>
+            <column name="DESCRIPTION" type="VARCHAR(255)">
+                <constraints  nullable="false"/>
+            </column>
+        </createTable>
+        <rollback>
+            <dropTable tableName="NOTE"/>
+        </rollback>
+    </changeSet>
 </databaseChangeLog>

@@ -8,7 +8,7 @@ WORKDIR /app
 COPY target/your-spring-boot-app.jar app.jar
 
 # Expose a port that the application will run on (replace 8080 with your app's port)
-EXPOSE 8080
+EXPOSE 8081
 
 # Define the command to run your Spring Boot application
 CMD ["java", "-jar", "app.jar"]
