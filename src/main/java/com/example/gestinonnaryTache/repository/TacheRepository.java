@@ -10,6 +10,4 @@ import java.util.List;
 public interface TacheRepository extends JpaRepository<Taches, Long> {
     List<Taches> findByUser(String user);
     Taches findByIdAndUser(Long id, String user);
-
-    void deleteTache(Long id);
 }
