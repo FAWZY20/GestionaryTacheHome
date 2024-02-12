@@ -2,6 +2,7 @@ package com.example.gestinonnaryTache.controller;
 
 import com.example.gestinonnaryTache.model.Utilisateur;
 import com.example.gestinonnaryTache.repository.UtilisateurRepository;
+import com.example.gestinonnaryTache.service.EmailService;
 import com.example.gestinonnaryTache.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -13,6 +14,10 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private EmailService emailService;
+
     @Autowired
     private UtilisateurRepository utilisateurRepository;
 
@@ -54,5 +59,13 @@ public class UserController {
 
         utilisateurRepository.save(utilisateur);
     }
+
+
+    @PostMapping("/newUserFamilly")
+    public void createUserFamily(@RequestBody Utilisateur utilisateur){
+        utilisateurRepository.save(utilisateur);
+        emailService.sendSimpleMessage(utilisateur);
+    }
+
 
 }
