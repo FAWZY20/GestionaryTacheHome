@@ -97,7 +97,7 @@
 				<version>3.3.2</version>
 				<configuration>
 					<to>
-						<image>registry.hub.docker.com/felsam99/gerermamaisoneasy:1.0.6</image>
+						<image>registry.hub.docker.com/felsam99/gerermamaisoneasy:1.0.7</image>
 					</to>
 				</configuration>
 			</plugin>
