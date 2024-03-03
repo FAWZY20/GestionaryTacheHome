@@ -41,10 +41,9 @@ public class UserController {
         utilisateurRepository.save(utilisateur);
     }
 
-    @DeleteMapping("/users/{mail}")
-    public void deleteUser(@PathVariable("mail") String mail){
-        Utilisateur utilisateur = userService.getUserByEmail(mail);
-        utilisateurRepository.deleteById(utilisateur.getId());
+    @DeleteMapping("/deleteUser/{id}")
+    public void deleteUser(@PathVariable("id") long id){
+        utilisateurRepository.deleteById(id);
     }
 
     @PutMapping("/updateUser/{mail}")
