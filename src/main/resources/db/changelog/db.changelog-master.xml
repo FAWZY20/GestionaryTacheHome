@@ -76,9 +76,6 @@
             <column name="DESCRIPTION" type="VARCHAR(255)">
                 <constraints  nullable="true"/>
             </column>
-            <column name="PIECE" type="VARCHAR(255)">
-                <constraints  nullable="false"/>
-            </column>
             <column name="PRIORITE" type="VARCHAR(255)">
                 <constraints  nullable="false"/>
             </column>

@@ -30,11 +30,7 @@ public class Taches {
     @Column(name = "PRIORITE", nullable = false)
     private String priorite;
 
-    @Column(name = "PIECE", nullable = false)
-    private String piece;
-
-
-    public Taches(Long id, String titre, String description, String dateFin, String statut, String user, String priorite, String piece) {
+    public Taches(Long id, String titre, String description, String dateFin, String statut, String user, String priorite) {
         this.id = id;
         this.titre = titre;
         this.description = description;
@@ -42,7 +38,6 @@ public class Taches {
         this.statut = statut;
         this.user = user;
         this.priorite = priorite;
-        this.piece = piece;
     }
 
     public Taches() {
@@ -55,14 +50,6 @@ public class Taches {
 
     public void setPriorite(String priorite) {
         this.priorite = priorite;
-    }
-
-    public String getPiece() {
-        return piece;
-    }
-
-    public void setPiece(String piece) {
-        this.piece = piece;
     }
 
     public Long getId() {
