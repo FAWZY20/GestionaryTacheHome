@@ -28,6 +28,9 @@
             <column name="PRENOM" type="VARCHAR(255)">
                 <constraints nullable="false" />
             </column>
+            <column name="MAITRE" type="VARCHAR(10)">
+                <constraints nullable="false" />
+            </column>
         </createTable>
         <rollback>
             <dropTable tableName="UTILISATEURS"/>

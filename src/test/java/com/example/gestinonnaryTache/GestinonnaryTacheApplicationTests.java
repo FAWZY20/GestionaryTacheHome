@@ -30,7 +30,7 @@ class GestinonnaryTacheApplicationTests {
 
 	private Utilisateur utilisateur;
 
-	Utilisateur utilisateur1 = new Utilisateur("els","test1234","els@outlook.fr","","jlal");
+	Utilisateur utilisateur1 = new Utilisateur("els","test1234","els@outlook.fr","","jlal",true);
 
 	@Test
 	void addUser() throws Exception {

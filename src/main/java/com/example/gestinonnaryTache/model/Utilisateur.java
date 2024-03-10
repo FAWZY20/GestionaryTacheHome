@@ -25,19 +25,30 @@ public class Utilisateur {
     @Column(name = "MAIL", nullable = false)
     private String mail;
 
+    @Column(name = "MAITRE")
+    private Boolean maitre = true;
     @Column(name = "IMAGE")
     private String image = "https://t4.ftcdn.net/jpg/03/49/49/79/360_F_349497933_Ly4im8BDmHLaLzgyKg2f2yZOvJjBtlw5.jpg";
 
-    public Utilisateur(String nom, String password, String mail, String image, String prenom) {
+    public Utilisateur(String nom, String password, String mail, String image, String prenom, Boolean maitre) {
         this.nom = nom;
         this.prenom= prenom;
         this.password = password;
         this.mail = mail;
+        this.maitre = maitre;
         this.image = image;
     }
 
     public Utilisateur() {
 
+    }
+
+    public Boolean getMaitre() {
+        return maitre;
+    }
+
+    public void setMaitre(Boolean maitre) {
+        this.maitre = maitre;
     }
 
     public String getImage() {
