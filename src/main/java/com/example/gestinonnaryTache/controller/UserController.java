@@ -52,6 +52,7 @@ public class UserController {
 
         utilisateur.setNom(utilisateurDetails.getNom());
         utilisateur.setPrenom(utilisateurDetails.getPrenom());
+        utilisateur.setMaitre(utilisateurDetails.getMaitre());
         utilisateur.setImage(utilisateurDetails.getImage());
         utilisateur.setPassword(utilisateurDetails.getPassword());
         utilisateur.setMail(utilisateurDetails.getMail());
