@@ -46,8 +46,8 @@ public class UserController {
         utilisateurRepository.deleteById(id);
     }
 
-    @PutMapping("/updateUser/{id}")
-    public void updateUser(@PathVariable("id") String mail, @RequestBody Utilisateur utilisateurDetails){
+    @PutMapping("/updateUser/{mail}")
+    public void updateUser(@PathVariable("mail") String mail, @RequestBody Utilisateur utilisateurDetails){
         Utilisateur utilisateur = userService.getUserByEmail(mail);
 
         utilisateur.setNom(utilisateurDetails.getNom());
@@ -59,6 +59,15 @@ public class UserController {
 
         utilisateurRepository.save(utilisateur);
     }
+
+
+    @PutMapping("/updateUserById/{id}")
+    public void updateUserMaitre(@PathVariable("id") long id, @RequestBody Utilisateur utilisateurDetails){
+        Utilisateur utilisateur = userService.getUserById(id);
+        utilisateur.setMaitre(utilisateurDetails.getMaitre());
+        utilisateurRepository.save(utilisateur);
+    }
+
 
 
     @PostMapping("/newUserFamilly")

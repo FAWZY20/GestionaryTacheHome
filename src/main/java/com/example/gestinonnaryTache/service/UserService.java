@@ -26,6 +26,10 @@ public class UserService {
         return utilisateurRepository.findByMail(mail);
     }
 
+    public Utilisateur getUserById(long id) {
+        return utilisateurRepository.findById(id);
+    }
+
     public ResponseEntity<?> loginCheck(String mail, String pwd) {
         Utilisateur utilisateur = utilisateurRepository.getByMailAndPassword(mail, pwd) ;
         try {
