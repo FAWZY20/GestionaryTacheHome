@@ -46,8 +46,8 @@ public class UserController {
         utilisateurRepository.deleteById(id);
     }
 
-    @PutMapping("/updateUser/{mail}")
-    public void updateUser(@PathVariable("mail") String mail, @RequestBody Utilisateur utilisateurDetails){
+    @PutMapping("/updateUser/{id}")
+    public void updateUser(@PathVariable("id") String mail, @RequestBody Utilisateur utilisateurDetails){
         Utilisateur utilisateur = userService.getUserByEmail(mail);
 
         utilisateur.setNom(utilisateurDetails.getNom());
